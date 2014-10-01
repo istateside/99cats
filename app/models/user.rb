@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  # attr_reader :password_digest
   attr_reader :password
+
   validates :username, :password_digest, presence: :true
 
   after_initialize :set_session_token
@@ -18,8 +18,7 @@ class User < ActiveRecord::Base
     user.is_password?(password) ? user : nil
   end
 
-  def pas
-    sword=(password)
+  def password=(password)
     self.password_digest = BCrypt::Password.create(password)
     self.save!
   end

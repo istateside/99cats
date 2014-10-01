@@ -1,13 +1,12 @@
 class SessionsController < ApplicationController
 
   def create
-    check_log_in
     user = User.find_by_credentials(
       params[:user][:username],
       params[:user][:password]
     )
 
-
+    fail
     if user.nil?
       flash[:errors] = ["credentials were wrong"]
       render :new
@@ -19,7 +18,7 @@ class SessionsController < ApplicationController
   end
 
   def new
-    render :new unless check_log_in
+    render :new
   end
 
   def destroy

@@ -47,8 +47,9 @@ class CatsController < ApplicationController
   end
 
   def require_ownership
-    if current_user.id!= Cat.find(params[:id]).user_id
-      fail
+    if current_user.nil?
+      redirect_to new_session_url
+    elsif current_user.id != Cat.find(params[:id]).user_id
       redirect_to cats_url
     end
   end

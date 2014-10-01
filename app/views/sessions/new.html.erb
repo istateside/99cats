@@ -1,5 +1,9 @@
 <h1>Log in</h1>
-
+<% if flash[:errors] %>
+	<% flash[:errors].each do |error| %>
+		<%= error %>
+	<% end %>
+<% end %>
 <form action="<%= sessions_url %>" method="POST">
 	<input
 	     name="authenticity_token"
@@ -14,11 +18,7 @@
 
 
 	<input type="submit" value="Log in">
-<% if flash[:errors] %>
-	<% flash[:errors].each do |error| %>
-		<%= error %>
-	<% end %>
-<% end %>
+
 </form>
 <br>
 <a href="<%= new_user_url %>">Register a new user!</a>
