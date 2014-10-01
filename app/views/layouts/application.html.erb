@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html>
-
-<% if !current_user.nil? %>
-<ul>
-	<li> Logged in as: <%= current_user.username %> </li>
-	<!-- <li> <%= button_to "Logout", session_url(session), method: :delete %> -->
-		<form action="<%= request_approve_url(request) %>" method="POST"><button type="submit">Log Out!</button></form>
-</ul>
-
-<% else %>
-<form action="<%= new_session_url %>" method="GET"><button type="submit">Log In!</button></form>
-
-<% end %>
+<%= render "shared/login" %>
 <head>
   <title>RentalCats</title>
 </head>

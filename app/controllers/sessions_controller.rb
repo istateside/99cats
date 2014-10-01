@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
       params[:user][:password]
     )
 
-    fail
     if user.nil?
       flash[:errors] = ["credentials were wrong"]
       render :new

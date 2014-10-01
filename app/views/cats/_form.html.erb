@@ -31,9 +31,5 @@
 	<label for="cat_description">Description of Cat</label>
 	<textarea name="cat[description]" id="cat_description"><%= @cat.description %></textarea>
 <br><br>
-<% if @cat.persisted? %>
-	<input type="submit" value="change your cat - to a better cat or a worse cat">
-<% else %>
-	<input type="submit" value="Add your cat to the database!">
-<% end %>
+	<input type="submit" value=<%= @cat.persisted? ? "Change your cat - to a better cat!" : "Add your cat to the database!" %>>
 </form>
